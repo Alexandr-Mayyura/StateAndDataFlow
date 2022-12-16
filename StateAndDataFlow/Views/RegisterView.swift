@@ -19,7 +19,7 @@ struct RegisterView: View {
                     .multilineTextAlignment(.center)
                     .padding(.leading, 60)
                 Text("\(userName.count)")
-                    .foregroundColor(changeColor())
+                    .foregroundColor(changeColorText())
                     .padding()
                 Spacer()
             }
@@ -39,7 +39,7 @@ struct RegisterView: View {
         return isEnable
     }
     
-    private func changeColor() -> Color {
+    private func changeColorText() -> Color {
         let color = userName.count < 3 ? Color.red : Color.green
         return color
     }
