@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var timer = TimeCounter()
-    @State private var storageManager = StorageManager()
+    @StateObject private var storageManager = StorageManager()
     @EnvironmentObject private var userManager: UserManager
 
     var body: some View {
