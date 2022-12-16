@@ -17,6 +17,7 @@ struct RegisterView: View {
             HStack {
                 TextField("Enter your name...", text: $userName)
                     .multilineTextAlignment(.center)
+                    .padding(.leading, 60)
                 Text("\(userName.count)")
                     .foregroundColor(changeColor())
                     .padding()
