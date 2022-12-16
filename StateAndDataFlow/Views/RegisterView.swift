@@ -35,16 +35,13 @@ struct RegisterView: View {
     }
     
     private func isEnableButton() -> Bool {
-        let isEnable = userName.count != 0 ? false : true
+        let isEnable = userName.count < 3 ? true : false
         return isEnable
     }
     
     private func changeColor() -> Color {
-        if userName.count < 3 {
-           return Color.red
-        } else {
-           return Color.green
-        }
+        let color = userName.count < 3 ? Color.red : Color.green
+        return color
     }
     
     private func registerUser() {
