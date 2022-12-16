@@ -16,11 +16,11 @@ struct ContentView: View {
         VStack {
             Text("Hi, \(userManager.userName)")
                 .font(.largeTitle)
-                .padding(.top, 100)
+                .padding(.top, 84)
                 
             Text(timer.counter.formatted())
                 .font(.largeTitle)
-                .padding(.top, 100)
+                .padding(.top, 84)
             Spacer()
             ButtonView(
                 color: .red,
@@ -34,6 +34,7 @@ struct ContentView: View {
                 text: "LogOut"
             )
         }
+        .padding()
     }
     
     private func logOut() {
