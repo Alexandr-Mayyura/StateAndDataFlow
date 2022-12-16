@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StarterView: View {
- 
     @EnvironmentObject private var user: UserManager
     
     var body: some View {

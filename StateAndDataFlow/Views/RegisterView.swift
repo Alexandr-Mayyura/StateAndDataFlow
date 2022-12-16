@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct RegisterView: View {
-    private var storageManager = StorageManager()
     @EnvironmentObject private var userManager: UserManager
     @State private var userName = ""
+    private var storageManager = StorageManager()
     
     var body: some View {
         VStack {

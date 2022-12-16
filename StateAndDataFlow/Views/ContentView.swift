@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var userManager: UserManager
     @StateObject private var timer = TimeCounter()
     private var storageManager = StorageManager()
-    @EnvironmentObject private var userManager: UserManager
 
     var body: some View {
         VStack {
