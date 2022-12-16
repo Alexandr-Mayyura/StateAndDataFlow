@@ -8,6 +8,6 @@
 import Foundation
 import SwiftUI
 
-class StorageManager: ObservableObject {
+class StorageManager {
     @AppStorage("username") var userName = ""
 }

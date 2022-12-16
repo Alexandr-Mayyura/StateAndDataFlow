@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @StateObject private var storageManager = StorageManager()
+    private var storageManager = StorageManager()
     @EnvironmentObject private var userManager: UserManager
     @State private var userName = ""
     
