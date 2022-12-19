@@ -9,45 +9,47 @@ import SwiftUI
 
 struct RegisterView: View {
     @EnvironmentObject private var userManager: UserManager
-    @State private var userName = ""
-    private var storageManager = StorageManager()
     
     var body: some View {
         VStack {
-            HStack {
-                TextField("Enter your name...", text: $userName)
-                    .multilineTextAlignment(.center)
-                    .padding(.leading, 60)
-                Text("\(userName.count)")
-                    .foregroundColor(changeColorText())
-                    .padding()
-                Spacer()
-            }
+            UserNameTF(
+                name: $userManager.user.name,
+                nameIsValid: userManager.nameIsValid
+            )
             Button(action: registerUser) {
                 HStack {
                     Image(systemName: "checkmark.circle")
                     Text("OK")
                 }
             }
-            .disabled(isEnableButton())
+            .disabled(!userManager.nameIsValid)
         }
         .padding()
     }
     
-    private func isEnableButton() -> Bool {
-        let isEnable = userName.count < 3 ? true : false
-        return isEnable
-    }
-    
-    private func changeColorText() -> Color {
-        let color = userName.count < 3 ? Color.red : Color.green
-        return color
-    }
-    
     private func registerUser() {
-        if !userName.isEmpty {
-            storageManager.userName = userName
-            userManager.userName = storageManager.userName 
+        userManager.user.isRegistered.toggle()
+        DataManager.shared.save(user: userManager.user)
+    }
+}
+
+struct UserNameTF: View {
+    
+    @Binding var name: String
+    var nameIsValid = false
+    
+    var body: some View {
+        ZStack {
+            TextField("Type your name...", text: $name)
+                .multilineTextAlignment(.center)
+            HStack {
+                Spacer()
+                Text(name.count.formatted())
+                    .font(.callout)
+                    .foregroundColor(nameIsValid ? .green : .red)
+                    .padding([.top, .trailing])
+            }
+            .padding(.bottom)
         }
     }
 }
